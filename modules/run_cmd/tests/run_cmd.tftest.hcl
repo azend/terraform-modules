@@ -3,7 +3,6 @@ run "hello_world" {
     command = "echo hello world"
   }
 
-  # Check that the bucket name is correct
   assert {
     condition     = output.stdout == "hello world"
     error_message = "Failed to collect correct output"
@@ -23,7 +22,6 @@ run "terraform_version" {
     command = "terraform version"
   }
 
-  # Check that the bucket name is correct
   assert {
     condition     = strcontains(data.external.run_command.result.command_stdout, "Terraform")
     error_message = "Failed to execute command"
